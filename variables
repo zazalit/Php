@@ -1,0 +1,14 @@
+<?php
+    $NameOfTheFilm = "Indiana Jones and the last crusade"; //string
+
+    $HaveYouSeenThisMovie = FALSE; //boolean
+
+    $ReleaseYear = 1989; //integer
+
+    $NoteIMDB = 8.2; //float
+
+
+    echo $NameOfTheFilm ;
+    echo $HaveYouSeenThisMovie ;
+    echo $ReleaseYear ;
+    echo $NoteIMDB ;
