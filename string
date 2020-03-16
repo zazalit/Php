@@ -21,5 +21,5 @@
     $LengthMesssage3 = strlen ($Message3) / 2;
     $SubstringMessage3 = substr($Message3, 5, $LengthMesssage3);
     $ModifMessage3 = str_replace("@#?", " ", $SubstringMessage3);
-    $InverseMessage3 = strrev($RemplacementMessage3);
+    $InverseMessage3 = strrev($ModifMessage3);
     echo $InverseMessage3;
