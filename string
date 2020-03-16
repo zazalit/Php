@@ -1,25 +1,25 @@
 <?php
-    $message1 =  "0@sn9sirppa@#?ia'jgtvryko1";
+    $message1 = "0@sn9sirppa@#?ia'jgtvryko1";
     $message2 = "q8e?wsellecif@#?sel@#?setuotpazdsy0*b9+mw@x1vj";
     $message3 = "aopi?sgnirts@#?sedhtg+p9l!";
 
     //decryption Message1
     $lengthMesssage1 = strlen ($message1) / 2;
-    $substringMessage1 = substr($message1, 5, $lengthMesssage1);
-    $modifMessage1 = str_replace("@#?", " ", $substringMessage1);
+    $subStringMessage1 = substr($message1, 5, $lengthMesssage1);
+    $modifMessage1 = str_replace("@#?", " ", $subStringMessage1);
     $inverseMessage1 = strrev($modifMessage1);
-    echo $inverseMessage1;
+    echo $inverseMessage1." ";
 
     //decryption Message 2
     $lengthMesssage2 = strlen ($message2) / 2;
-    $substringMessage2 = substr($message2, 5, $lengthMesssage2);
-    $modifMessage2 = str_replace("@#?", " ", $substringMessage2);
+    $subStringMessage2 = substr($message2, 5, $lengthMesssage2);
+    $modifMessage2 = str_replace("@#?", " ", $subStringMessage2);
     $inverseMessage2 = strrev($modifMessage2);
-    echo $inverseMessage2;
+    echo $inverseMessage2." ";
 
     //decryption Message 3
     $lengthMesssage3 = strlen ($message3) / 2;
-    $substringMessage3 = substr($message3, 5, $lengthMesssage3);
-    $modifMessage3 = str_replace("@#?", " ", $substringMessage3);
+    $subStringMessage3 = substr($message3, 5, $lengthMesssage3);
+    $modifMessage3 = str_replace("@#?", " ", $subStringMessage3);
     $inverseMessage3 = strrev($modifMessage3);
-    echo $inverseMessage3;
+    echo $inverseMessage3." ";
