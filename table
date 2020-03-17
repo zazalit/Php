@@ -1,0 +1,10 @@
+<?php
+
+
+$moviesOfIndianaJones = array(
+    "Raiders of the Lost Ark" => array("Harrison Ford", "Karen Allen", "Paul Freeman", "Ronald Lacey"),
+    "Indiana Jones and the Temple of Doom" => array("Harrison Ford", "Kate Capshaw", "Jonathan Ke Quan", "Amrish Puri"),
+    "Indiana Jones and the Last Crusade" => array("Harrison Ford", "Sean Connery", "Denholm Elliott", "Alison Doody")
+);
+
+foreach ($moviesOfIndianaJones as $key => $value) echo "Dans le film $key, les principaux acteurs sont : $value[0] , $value[1] , $value[2] ";
