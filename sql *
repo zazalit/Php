@@ -23,7 +23,7 @@ mysql> SELECT *
 mysql> SELECT *
     -> FROM wizard 
     -> WHERE birthday 
-    -> BETWEEN '1975-01-01' AND '1985-01-01';
+    -> BETWEEN '1975-01-01' AND '1985-01-01' AND is_muggle != 1;
 +----+-----------+----------+------------+-------------+---------------------------------------+-----------+
 | id | firstname | lastname | birthday   | birth_place | biography                             | is_muggle |
 +----+-----------+----------+------------+-------------+---------------------------------------+-----------+
@@ -33,8 +33,7 @@ mysql> SELECT *
 |  5 | ginny     | weasley  | 1981-08-11 |             | Sister of Ron and girlfriend of Harry |         0 |
 |  6 | fred      | weasley  | 1978-04-01 |             |                                       |         0 |
 |  7 | george    | weasley  | 1978-04-01 |             |                                       |         0 |
-| 10 | drago     | malefoy  | 1980-06-05 |             |                                       |         0 |
-| 14 | dudley    | dursley  | 1980-06-23 |             | Cousin d'Harry                        |         1 |
+| 10 | drago     | malefoy  | 1980-06-05 |             |                                       |         0 ||
 +----+-----------+----------+------------+-------------+---------------------------------------+-----------+
 8 rows in set (0.00 sec)
  
