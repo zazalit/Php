@@ -1,0 +1,66 @@
+@Dell:~$ curl -I https://css-tricks.com/
+HTTP/2 200 
+date: Wed, 25 Mar 2020 09:16:26 GMT
+content-type: text/html; charset=UTF-8
+set-cookie: __cfduid=d68ff6232832a289385ae939e95b059581585127786; expires=Fri, 24-Apr-20 09:16:26 GMT; path=/; domain=.css-tricks.com; HttpOnly; SameSite=Lax; Secure
+link: <https://css-tricks.com/wp-json/>; rel="https://api.w.org/"
+x-xss-protection: 1
+x-content-type-options: nosniff
+referrer-policy: no-referrer-when-downgrade
+x-fw-server: Flywheel/5.1.0
+x-fw-dynamic: TRUE
+x-fw-hash: lwxgywlq8s
+x-fw-version: 5.0.0
+x-cacheable: YES
+fastly-restarts: 1
+x-served-by: cache-cdg20742-CDG
+x-cache: HIT
+x-cache-hits: 1
+x-timer: S1585127787.747422,VS0,VE1
+vary: Accept-Encoding
+x-fw-serve: TRUE
+x-fw-static: NO
+x-fw-type: FLYWHEEL_BOT
+cf-cache-status: DYNAMIC
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+server: cloudflare
+cf-ray: 5797887b1ebfcd9b-CDG
+alt-svc: h3-27=":443"; ma=86400, h3-25=":443"; ma=86400, h3-24=":443"; ma=86400, h3-23=":443"; ma=86400
+--------------------------------------------------------------
+@Dell:~$ curl -I https://www.google.com/doodles
+HTTP/2 405 
+allow: GET
+content-type: text/html; charset=UTF-8
+x-cloud-trace-context: 1e7b9ebf5a260f5867f37a9422631d0b
+content-length: 188
+date: Wed, 25 Mar 2020 10:13:30 GMT
+server: Google Frontend
+alt-svc: quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443"; ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,h3-T050=":443"; ma=2592000
+--------------------------------------------------------------
+@Dell:~$ curl -I https://www.wildcodeschool.com/fr-FR/translation%20missing:%20fr-FR.routes.404
+HTTP/1.1 500 Internal Server Error
+Server: nginx/1.14.0 (Ubuntu)
+Date: Wed, 25 Mar 2020 10:35:46 GMT
+Content-Type: text/plain
+Connection: keep-alive
+X-Request-Id: f8582612-8eed-489d-8737-4d4898db47bb
+X-Runtime: 0.040194
+Vary: Origin
+--------------------------------------------------------------
+@Dell:~$ curl -I http://wildcodeschool.fr/pagequinexistepas
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.14.0 (Ubuntu)
+Date: Wed, 25 Mar 2020 10:37:24 GMT
+Content-Type: text/html
+Content-Length: 194
+Location: https://www.wildcodeschool.com/fr-FR/pagequinexistepas
+X-Cache: MISS from controller.access.network
+X-Cache-Lookup: MISS from controller.access.network:3128
+Connection: keep-alive
+
+
+
+
+
+
