@@ -1,0 +1,65 @@
+<?php
+
+//Lier les deux pages
+require_once 'connec.php';
+$pdo = new \PDO(DSN, USER, PASS);
+
+//récupérer une donnée
+if (isset($_POST['submit'])) {
+    $firstname = trim($_POST['firstname']);
+    $lastname = trim($_POST['lastname']);
+    $query = "INSERT INTO friend (firstname, lastname) VALUES (:firstname, :lastname)";
+    echo $query;
+
+//requête préparée
+    $statement = $pdo->prepare($query);
+    $statement->bindValue(':firstname', $firstname);
+    $statement->bindValue(':lastname', $lastname);
+    $statement->execute();
+}
+
+else {
+    echo 'Don\'t forget submit' ;
+}
+
+//list affichage
+$query = "SELECT * FROM friend";
+$statement = $pdo->query($query);
+$list = $statement-> fetchAll();
+
+//list
+echo '<ul>';
+foreach($list as $friend)
+{
+    echo '<li>';
+    echo $friend['firstname'] . ' ' . $friend['lastname'];
+    echo '</li>';
+}
+echo '</ul>';
+
+?>
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <form action="index.php" method="post">
+            <div>
+                <label for="firstname">what's your name ?</label>
+                <input type="text" id="firstname" name="firstname" placeholder="firstname">
+            </div>
+
+            <div>
+                <label for="lastname">what's your lastname ?</label>
+                <input type="text" id="lastname" name="lastname" placeholder="lastname">
+            </div>
+
+            <div>
+                <button type="submit" name="submit">Send</button>
+            </div>
+        </form>
+    </body>
+</html>
