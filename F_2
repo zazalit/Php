@@ -1,0 +1,126 @@
+<?php
+//tous les champs doivent être remplis sinon message d'erreur
+//tous les champs doivent être remplis correctement sinon message d'erreur
+//si tous les champs remplis et correct afficher message de validation
+
+if($_POST)
+{
+    $errors = array();
+
+    //vérification user_name
+
+    if(empty($_POST["user_name"]))
+    {
+        $errors["user_name_error_1"] = "Veuillez saisir votre nom ! ";
+    }
+
+    elseif (strlen($_POST["user_name"]) < 2)
+    {
+        $errors["user_name_error_2"] = "Veuillez compléter votre nom ! ";
+    }
+
+    //vérification user_first_name
+    if(empty($_POST["user_first_name"]))
+    {
+        $errors["user_first_error_1"] = "Veuillez saisir votre prénom ! ";
+    }
+
+
+    //vérification mail
+
+    if(empty($_POST["courriel"]))
+    {
+        $errors["courriel_error_1"] = "Nous avons besoin de te contacter ! ";
+    }
+
+    elseif (! filter_var ($courriel , FILTER_VALIDATE_EMAIL))
+    {
+        $errors ["courriel_error_2"] = "Format incorrect ! ";
+    }
+
+
+    //vérification tel
+    if(empty($_POST["user_tel"]))
+    {
+        $errors["user_tel_error_1"] = "Nous avons besoin de te contacter ! ";
+    }
+    elseif (strlen($_POST["user_tel"]) < 10)
+    {
+        $errors["user_tel_error_2"] = "Format incorrect ! ";
+    }
+
+    //vérification message
+    if(empty($_POST["message"]))
+    {
+        $errors["message_error"] = "Nous attendons ton message ! ";
+    }
+
+    //message de validation du formulaire si on ne compte aucune erreur
+    if(count($errors) == 0)
+    {
+        echo 'Merci '. ($_POST['user_name']). ' '. ($_POST['user_first_name']) . ' de nous avoir contacté à propos de ' .
+            ($_POST['subject']) . '.<br>';
+        echo 'Un de nos conseiller vous contactera soit à l’adresse ' . ($_POST['courriel']) . ' ou par téléphone au ' .
+            ($_POST['user_tel']) . ' dans les plus brefs délais pour traiter votre demande :<br>';
+        echo $_POST['message'];
+    }
+
+}
+?>
+
+<form action="index.php" method="POST">
+
+    <br>
+
+    <div>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="user_name" value="<?php if(isset($_POST["user_name"])) echo $_POST["user_name"]; ?>">
+
+        <span> <?php if(isset($errors["user_name_error_1"])) echo $errors["user_name_error_1"]; ?> </span>
+        <span> <?php if(isset($errors["user_name_error_2"])) echo $errors["user_name_error_2"]; ?> </span>
+    </div>
+
+    <div>
+        <label for="Prénom">Prénom</label>
+        <input type="text" id="Prénom" name="user_first_name" value="<?php if(isset($_POST["user_first_name"])) echo $_POST["user_first_name"]; ?>">
+
+        <span> <?php if(isset($errors["user_first_error_1"])) echo $errors["user_first_error_1"]; ?> </span>
+    </div>
+
+
+    <div>
+        <label for="courriel">Mail :</label>
+        <input type="email" id="courriel" name="courriel" value="<?php if(isset($_POST[" courriel"])) echo $_POST["courriel"]; ?>">
+
+        <span> <?php if(isset($errors["courriel_error_1"])) echo $errors["courriel_error_1"]; ?> </span>
+        <span> <?php if(isset($errors["courriel_error_2"])) echo $errors["courriel_error_2"]; ?> </span>
+    </div>
+
+
+    <div>
+        <label for="user-tel">Téléphone :</label>
+        <input type="tel" id="user-tel" name="user_tel" value="<?php if(isset($_POST["user_tel"])) echo $_POST["user_tel"]; ?>">
+
+        <span> <?php if(isset($errors["user_tel_error_1"])) echo $errors["user_tel_error_1"]; ?> </span>
+        <span> <?php if(isset($errors["user_tel_error_2"])) echo $errors["user_tel_error_2"]; ?> </span>
+    </div>
+
+    <div>
+        <label for="subject">Objet :</label>
+        <select name="subject">
+            <option value="Votre commande">Votre commande</option>
+            <option value="Un problème technique">Un problème technique</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="message">Message :</label>
+        <textarea id="message" name="message"  placeholder="Ecrivez vos questions ici"><?php if(isset($_POST["message"])) echo $_POST["message"]; ?></textarea>
+
+        <span> <?php if(isset($errors["message_error"])) echo $errors["message_error"]; ?> </span>
+    </div>
+
+    <div>
+        <button type="submit">Envoyer</button>
+    </div>
+</form>
