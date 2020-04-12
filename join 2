@@ -1,20 +1,6 @@
 
 mysql>  SELECT name, COUNT(*) as nb_player FROM team
     ->    JOIN player ON team_id=team.id
-    ->    GROUP BY name;
-+------------+-----------+
-| name       | nb_player |
-+------------+-----------+
-| Gryffindor |        36 |
-| Hufflepuff |        12 |
-| Ravenclaw  |        15 |
-| Slytherin  |        21 |
-+------------+-----------+
-4 rows in set (0.00 sec)
-
-
-mysql>  SELECT name, COUNT(*) as nb_player FROM team
-    ->    JOIN player ON team_id=team.id
     ->    GROUP BY name ORDER BY nb_player desc;
 +------------+-----------+
 | name       | nb_player |
