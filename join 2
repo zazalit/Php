@@ -1,0 +1,76 @@
+
+mysql>  SELECT name, COUNT(*) as nb_player FROM team
+    ->    JOIN player ON team_id=team.id
+    ->    GROUP BY name;
++------------+-----------+
+| name       | nb_player |
++------------+-----------+
+| Gryffindor |        36 |
+| Hufflepuff |        12 |
+| Ravenclaw  |        15 |
+| Slytherin  |        21 |
++------------+-----------+
+4 rows in set (0.00 sec)
+
+
+mysql>  SELECT name, COUNT(*) as nb_player FROM team
+    ->    JOIN player ON team_id=team.id
+    ->    GROUP BY name ORDER BY nb_player desc;
++------------+-----------+
+| name       | nb_player |
++------------+-----------+
+| Gryffindor |        36 |
+| Slytherin  |        21 |
+| Ravenclaw  |        15 |
+| Hufflepuff |        12 |
++------------+-----------+
+4 rows in set (0.00 sec)
+    
+mysql>  SELECT name, COUNT(*) as full_team FROM team
+    ->    JOIN player ON team_id=team.id
+    ->    GROUP BY name 
+    ->    HAVING full_team > 13
+    ->    ORDER BY full_team desc;
++------------+-----------+
+| name       | full_team |
++------------+-----------+
+| Gryffindor |        36 |
+| Slytherin  |        21 |
+| Ravenclaw  |        15 |
++------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE player;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| id              | int(11)     | YES  |     | NULL    |       |
+| wizard_id       | int(11)     | YES  |     | NULL    |       |
+| team_id         | int(11)     | YES  |     | NULL    |       |
+| role            | varchar(50) | YES  |     | NULL    |       |
+| enrollment_date | date        | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>  SELECT CONCAT(firstname, ' ', lastname) as full_name, DATE_FORMAT(enrollment_date,'%W') as day,
+    ->    enrollment_date, name 
+    ->    FROM player 
+    ->    JOIN team  ON team_id = team.id
+    ->    JOIN wizard  ON wizard_id = wizard.id
+    ->    WHERE name = 'Gryffindor'
+    ->    HAVING day = 'Monday'
+    ->   ORDER BY enrollment_date ASC;
++----------------------+--------+-----------------+------------+
+| full_name            | day    | enrollment_date | name       |
++----------------------+--------+-----------------+------------+
+| George Weasley       | Monday | 1991-08-26      | Gryffindor |
+| Alice Longbottom     | Monday | 1992-02-17      | Gryffindor |
+| Cadogan              | Monday | 1993-01-04      | Gryffindor |
+| Godric Gryffindor    | Monday | 1993-08-30      | Gryffindor |
+| Sirius Black         | Monday | 1994-01-10      | Gryffindor |
+| Aberforth Dumbledore | Monday | 1995-04-24      | Gryffindor |
+| Augusta Longbottom   | Monday | 1999-10-25      | Gryffindor |
++----------------------+--------+-----------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> 
